@@ -1,0 +1,22 @@
+/*
+ reset + body
+ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+input, button {
+    font-family: inherit;
+}
+
+button, input, textarea {
+    transition: background-color .2s, border-color .2s, box-shadow .2s;
+}
