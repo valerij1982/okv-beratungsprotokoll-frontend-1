@@ -3,10 +3,24 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 
-if (process.env.NODE_ENV === 'development') {
-    const { worker } = require('./mocks/browser')
-    worker.start()
-}
+async function enableMocking() {
+    const mode = process.env.REACT_APP_API_MODE
+    console.log(
+        `%c[APP] API mode: ${mode}`,
+        'color: dodgerblue; font-weight: bold'
+    )
+    if (mode === 'msw') {
+        console.log('%c[APP] Starting MSW worker...', 'color: orange')
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<App />)
+        const { worker } = require('./mocks/browser')
+        worker.start({
+            onUnhandledRequest: 'bypass',
+        })
+    } else {
+        console.log('%c[APP] MSW disabled', 'color: gray')
+    }
+}
+enableMocking().then( () => {
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<App />)
+})

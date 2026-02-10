@@ -4,14 +4,9 @@ import { createContext, useContext, useEffect, useState } from 'react'
 const ThemeContext = createContext()
 
 export function ThemeProvider({ children }) {
-    const [theme, setTheme] = useState('light') // светлая по умолчанию
-
-    useEffect(() => {
-        // Загружаем из localStorage при первом запуске
-        const saved = localStorage.getItem('theme')
-        if (saved) setTheme(saved)
-        else document.documentElement.setAttribute('data-theme', 'light')
-    }, [])
+    const [theme, setTheme] = useState(() => {
+            return localStorage.getItem('theme') || 'light'
+    })
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme)

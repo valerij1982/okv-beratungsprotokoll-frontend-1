@@ -1,18 +1,20 @@
 import { useAuth } from '../auth/AuthContext'
 import logo from '../assets/okv_logo.jpg'
+import {useTheme} from "../ThemeContext";
 
-export default function Navbar({ theme, onToggleTheme }) {
+export default function Navbar() {
     const { user, logout } = useAuth()
+    const {theme, toggleTheme } = useTheme()
 
     return (
-        <nav className={`navbar ${theme}`}>
+        <nav className="navbar">
             <div className="logo">
                 <img src={logo} alt="OKV Logo" className="logo-img"/>
             </div>
 
             <div className="theme-toggle">
                 <span>Theme: </span>
-                <button onClick={onToggleTheme}>
+                <button onClick={toggleTheme}>
                     {theme === 'light' ? '☀️' : '🌙'}
                 </button>
             </div>
@@ -25,7 +27,12 @@ export default function Navbar({ theme, onToggleTheme }) {
                     </div>
 
                     <div className="user-actions">
-                        <button onClick={logout}>Logout</button>
+                        <button
+                            className="button button--secondary"
+                            onClick={logout}
+                        >
+                            Logout
+                        </button>
                     </div>
                 </>
             )}

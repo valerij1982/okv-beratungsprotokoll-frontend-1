@@ -1,10 +1,6 @@
-/*
-    CSS variables — сердце дизайна
-    Меняешь тут цвета — всё приложение меняется
-*/
-
+/* CSS-переменные и темы */
 :root {
-    /* colors */
+    /* 🌙 DARK THEME по умолчанию */
     --color-bg: #0f172a;
     --color-surface: #111827;
     --color-primary: #38bdf8;
@@ -36,4 +32,14 @@
     --color-muted: #6b7280;
     --color-primary: #2563eb;
     --color-primary-hover: #1d4ed8;
+}
+
+/* 🌙 DARK THEME */
+[data-theme='dark'] {
+    --color-bg: #0f172a;
+    --color-surface: #111827;
+    --color-text: #e5e7eb;
+    --color-muted: #9ca3af;
+    --color-primary: #38bdf8;
+    --color-primary-hover: #0ea5e9;
 }

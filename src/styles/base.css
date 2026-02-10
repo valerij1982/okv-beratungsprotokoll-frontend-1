@@ -1,22 +1,21 @@
-/*
- reset + body
- */
-
+/* Reset + типографика */
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
     font-family: var(--font-main);
     background: var(--color-bg);
     color: var(--color-text);
 }
 
-input, button {
+input, button, textarea {
     font-family: inherit;
-}
-
-button, input, textarea {
-    transition: background-color .2s, border-color .2s, box-shadow .2s;
+    transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.1s ease,
+            box-shadow 0.1s ease;
 }

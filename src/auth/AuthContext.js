@@ -13,7 +13,7 @@ export function AuthProvider({ children }) {
             return
         }
 
-        api.get('/me')
+        api.get('/api/me')
             .then(res => {
                 setUser(res.data)
             })
@@ -24,7 +24,7 @@ export function AuthProvider({ children }) {
     }, [token])
 
     const login = async (email, password) => {
-        const res = await api.post('/login', { email, password })
+        const res = await api.post('/api/login', { email, password })
 
         // axios сюда дойдёт ТОЛЬКО если статус 2xx
         setToken(res.data.token)
